@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="meta.title">NxfireDB — Lapisan Lokal di Depan Firebase</title>
+  <meta name="description" content="NxfireDB — kirim JSON ke localhost, NxfireDB yang meneruskannya ke Firebase. Cache, antrian offline, realtime WebSocket lokal, SDK 5 bahasa. Tanpa domain, tanpa biaya." data-i18n-attr="content|meta.desc" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        <img src="logo.png" alt="NxfireDB" class="brand-logo" />
+        <span class="brand-text">NxfireDB</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#tentang" data-i18n="nav.about">Tentang</a>
+        <a href="#fitur" data-i18n="nav.features">Fitur</a>
+        <a href="#pakai" data-i18n="nav.usage">Cara Pakai</a>
+        <a href="#sdk" data-i18n="nav.sdk">SDK</a>
+        <a href="#pasang" data-i18n="nav.install">Pasang</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-lang-btn="id" class="active">ID</button>
+          <button type="button" data-lang-btn="en">EN</button>
+        </div>
+        <a class="btn btn-primary btn-sm" href="https://github.com/teritipdb" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-glow"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="hero.badge">Lapisan lokal di depan Firebase Realtime Database</p>
+          <h1 data-i18n-html="hero.title">Kirim JSON ke <span class="accent">localhost</span>, biar kami yang bicara ke cloud</h1>
+          <p class="lede" data-i18n-html="hero.desc">
+            Aplikasi Anda cukup bicara ke <strong>127.0.0.1:9026</strong>. NxfireDB
+            meneruskan ke Firebase, menyembunyikan URL panjang, format <code>.json</code>,
+            dan token auth — plus <strong>cache</strong>, <strong>antrian offline</strong>,
+            dan <strong>realtime WebSocket lokal</strong>.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#pasang" data-i18n="hero.cta1">Mulai Pasang</a>
+            <a class="btn btn-ghost" href="#fitur" data-i18n="hero.cta2">Lihat Fitur</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="flow-card">
+            <div class="flow-row">
+              <div class="flow-box"><i data-lucide="monitor-smartphone"></i><span data-i18n="flow.app">Aplikasi Anda</span></div>
+              <div class="flow-arrow">POST 127.0.0.1:9026 →</div>
+            </div>
+            <div class="flow-row">
+              <div class="flow-box fire"><i data-lucide="flame"></i><span>nxfire-server</span></div>
+              <div class="flow-arrow">Firebase REST →</div>
+            </div>
+            <div class="flow-row">
+              <div class="flow-box cloud"><i data-lucide="cloud"></i><span>Firebase RTDB</span></div>
+            </div>
+            <pre class="flow-code"><span class="t-dim">$</span> curl -X POST http://127.0.0.1:9026/ \
+    -d <span class="t-ok">'{"op":"set","path":"/users/iyan",
+        "value":{"name":"iyan"}}'</span>
+
+<span class="t-dim">{ "ok": true, "meta": { "latency_ms": 42 } }</span></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TENTANG: mengapa -->
+    <section class="section" id="tentang">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="why.title">Mengapa NxfireDB Ada</h2>
+          <p class="section-subtitle" data-i18n="why.sub">Lahir dari keterbatasan — domain mahal, database berbayar mahal. Keterbatasan bukan penghalang untuk berkarya.</p>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-icon"><i data-lucide="globe-lock"></i></div>
+            <h3 data-i18n="why.1t">Tidak Ada Domain? Tidak Perlu</h3>
+            <p data-i18n="why.1d">Aplikasi berbicara ke localhost (127.0.0.1:9026) — gratis, milik sendiri, dan selalu ada.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i data-lucide="wallet"></i></div>
+            <h3 data-i18n="why.2t">Tidak Mampu Database Berbayar?</h3>
+            <p data-i18n="why.2d">Cukup tier gratis Firebase. URL panjang, format .json, dan token auth diganti satu perintah JSON sederhana.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i data-lucide="wifi-off"></i></div>
+            <h3 data-i18n="why.3t">Internet Tidak Stabil?</h3>
+            <p data-i18n="why.3d">Antrian offline menyimpan operasi tulis lalu mengirimnya ulang saat koneksi kembali — data tidak hilang.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i data-lucide="power"></i></div>
+            <h3 data-i18n="why.4t">Komputer Restart?</h3>
+            <p data-i18n="why.4d">Auto-start menyalakan ulang server sendiri saat komputer menyala.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FITUR -->
+    <section class="section alt" id="fitur">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="feat.title">Fitur</h2>
+          <p class="section-subtitle" data-i18n="feat.sub">Perantara lokal C++ native — tidak menyimpan data sendiri, semua data tetap di Firebase.</p>
+        </div>
+        <div class="card-grid three">
+          <article class="card">
+            <div class="card-icon"><i data-lucide="braces"></i></div>
+            <h3 data-i18n="feat.1t">Dua Gaya Operasi</h3>
+            <p data-i18n="feat.1d">Gaya path Firebase (/users/iyan) atau gaya tabel yang ramah (table+key). Alias: put/insert/select/delete.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i data-lucide="zap"></i></div>
+            <h3 data-i18n="feat.2t">Cache Lokal</h3>
+            <p data-i18n="feat.2d">cache_ttl menyimpan respons GET di memori — latency &lt; 1 ms, bukan 100-300 ms ke cloud. Otomatis dibatalkan saat ada tulis.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i data-lucide="radio"></i></div>
+            <h3 data-i18n="feat.3t">Realtime WebSocket Lokal</h3>
+            <p data-i18n="feat.3d">Subscribe per path lewat ws://127.0.0.1:9026/ws — perubahan didorong ke aplikasi Anda tanpa koneksi langsung ke Firebase.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i data-lucide="cloud-upload"></i></div>
+            <h3 data-i18n="feat.4t">Antrian Offline</h3>
+            <p data-i18n="feat.4d">Tulis yang gagal disimpan ke nxfire.queue.json dan dikirim ulang otomatis saat Firebase terjangkau.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i data-lucide="search-check"></i></div>
+            <h3 data-i18n="feat.5t">Query Lengkap</h3>
+            <p data-i18n="feat.5d">orderBy, startAt, endAt, equalTo, limitToFirst/Last, shallow — langsung dari perintah JSON Anda.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i data-lucide="shield-check"></i></div>
+            <h3 data-i18n="feat.6t">Balasan Seragam</h3>
+            <p data-i18n="feat.6d">{ ok, data, meta: latency_ms } saat sukses; { ok, error, hint } saat gagal — prediktabel di semua SDK.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARA PAKAI -->
+    <section class="section" id="pakai">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="use.title">Cara Pakai</h2>
+          <p class="section-subtitle" data-i18n="use.sub">Setup sekali, lalu lupakan bahwa Firebase ada di baliknya.</p>
+        </div>
+        <div class="install-grid">
+          <div class="term-card">
+            <div class="term-bar"><span></span><span></span><span></span><em>CLI — nxfire</em></div>
+            <pre class="term-body">nxfire setup      <span class="t-dim"># isi project, secret, port</span>
+nxfire test       <span class="t-dim"># uji koneksi ke Firebase</span>
+nxfire start      <span class="t-dim"># server jalan di latar belakang</span>
+nxfire stop       <span class="t-dim"># hentikan server</span>
+nxfire status     <span class="t-dim"># status server &amp; autostart</span>
+nxfire autostart  <span class="t-dim"># on/off saat komputer menyala</span>
+
+<span class="t-dim"># pantau path realtime</span>
+nxfire-watch /chat --port 9026</pre>
+          </div>
+          <div class="term-card">
+            <div class="term-bar"><span></span><span></span><span></span><em>HTTP — 127.0.0.1:9026</em></div>
+            <pre class="term-body">{ "op": "set",    "path": "/users/iyan",
+  "value": { "name": "iyan", "age": 30 } }
+
+{ "op": "get",    "path": "/users/iyan" }
+{ "op": "update", "path": "/users/iyan",
+  "value": { "age": 31 } }
+{ "op": "push",   "path": "/chat/room1",
+  "value": { "text": "halo" } }
+{ "op": "remove", "path": "/users/iyan" }
+
+<span class="t-dim">// gaya tabel yang ramah</span>
+{ "op": "insert", "table": "users",
+  "keyFrom": "name", "data": { "name": "iyan" } }</pre>
+          </div>
+        </div>
+        <div class="compare-note" data-i18n-html="use.map">
+          <strong>Pemetaan ke Firebase REST:</strong> set→PUT · get→GET · update→PATCH · push→POST · remove→DELETE.
+          Konfigurasi <code>nxfire.json</code>: project, region, api_key, secret, port (9026), cache_ttl, offline_queue.
+        </div>
+      </div>
+    </section>
+
+    <!-- SDK -->
+    <section class="section alt" id="sdk">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="sdk.title">SDK Multi Bahasa</h2>
+          <p class="section-subtitle" data-i18n="sdk.sub">Klien resmi siap pakai — atau tulis sendiri: protokolnya hanya HTTP + JSON.</p>
+        </div>
+        <div class="sdk-grid">
+          <div class="sdk-card"><strong>Python</strong><span>nxfire.py</span></div>
+          <div class="sdk-card"><strong>JavaScript</strong><span>Node · nxfire.js</span></div>
+          <div class="sdk-card"><strong>C#</strong><span>.NET 6+ · NxfireDb.cs</span></div>
+          <div class="sdk-card"><strong>Go</strong><span>nxfire.go</span></div>
+          <div class="sdk-card"><strong>PHP</strong><span>nxfire.php</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PASANG -->
+    <section class="section" id="pasang">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="ins.title">Cara Pasang</h2>
+          <p class="section-subtitle" data-i18n="ins.sub">Termudah lewat npm — atau unduh paket rilis v0.1.0.</p>
+        </div>
+        <div class="dl-grid">
+          <a class="dl-card" href="https://github.com/iyanrsaleh/nxfiredb/releases/download/v0.1.0/nxfire-sdk-0.1.0-windows-x64.tar.gz" rel="noopener">
+            <span class="dl-icon"><i data-lucide="app-window"></i></span>
+            <strong>Windows x64</strong>
+            <span class="dl-meta">nxfire-sdk-0.1.0-windows-x64.tar.gz</span>
+          </a>
+          <a class="dl-card" href="https://github.com/iyanrsaleh/nxfiredb/releases/download/v0.1.0/nxfire-sdk-0.1.0-linux-x86_64.tar.gz" rel="noopener">
+            <span class="dl-icon"><i data-lucide="terminal"></i></span>
+            <strong>Linux x86_64</strong>
+            <span class="dl-meta">nxfire-sdk-0.1.0-linux-x86_64.tar.gz</span>
+          </a>
+        </div>
+        <p class="dl-note" data-i18n-html="ins.dlNote">Semua paket tersedia di <a href="https://github.com/iyanrsaleh/nxfiredb/releases/tag/v0.1.0" target="_blank" rel="noopener">Releases v0.1.0</a>. Ekstrak lalu salin isi <code>bin/</code> ke folder yang ada di PATH.</p>
+
+        <h3 class="subhead" data-i18n="ins.buildTitle">Atau Lewat npm / Build dari Source</h3>
+        <div class="install-grid">
+          <div class="term-card">
+            <div class="term-bar"><span></span><span></span><span></span><em>npm</em></div>
+            <pre class="term-body">npm create nxfire-app@latest
+
+<span class="t-dim"># terpasang ke folder data + masuk PATH.
+# lalu buka terminal baru:</span>
+nxfire setup
+nxfire start</pre>
+          </div>
+          <div class="term-card">
+            <div class="term-bar"><span></span><span></span><span></span><em>Build dari source · CMake</em></div>
+            <pre class="term-body">cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+cmake --build build --config Release
+
+<span class="t-dim"># hasil: nxfire-server, nxfire-client,
+# nxfire, nxfire-watch</span>
+node tests/run_all.mjs   <span class="t-dim"># uji vs mock Firebase</span></pre>
+          </div>
+        </div>
+        <p class="install-note" data-i18n="ins.note">C++ native (WinHTTP di Windows, socket di Linux) — tanpa dependensi eksternal. Uji otomatis berjalan terhadap mock Firebase lokal, tanpa kredensial asli.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="logo.png" alt="NxfireDB" class="brand-logo footer-logo" />
+        <div>
+          <strong>NxfireDB</strong>
+          <p data-i18n="foot.tag">Lapisan lokal di depan Firebase — bagian dari ekosistem NXDOM.</p>
+        </div>
+      </div>
+      <nav class="footer-links">
+        <a href="https://github.com/teritipdb" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://iyanrsaleh.github.io/tatiye/" target="_blank" rel="noopener" data-i18n="foot.company">PT Tatiye Digital Solusindo</a>
+      </nav>
+      <p class="footer-copy" data-i18n="foot.copy">© 2026 NxfireDB · NXDOM</p>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>
